@@ -10,20 +10,20 @@ const authenticate = (request, response) => {
     if (match.length !== 0) {
         const userFound = match[0];
         if (userFound.password !== user.password) {
-            response.status(500).json({code: 104, message: 'Authentication failed. Wrong password.'});
+            response.status(500).json({status: 'error', message: 'Authentication failed. Wrong password.'});
         } else {
             const token = jwt.sign(userFound, 'secret_hash', {
                 expiresIn: '2 minutes'
             });
             response.status(200).json({
-                code: 105,
+                status: 'success',
                 message: 'Logged success',
                 token
             });
         }
     } else {
         response.status(500).json({
-            code: 103,
+            status: 'error',
             message: 'The user doesn\'t exist'
         });
     }

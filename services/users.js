@@ -33,14 +33,14 @@ const register = (request, response) => {
     const users = getUsers();
     if (users.some(iterator => iterator.username === user.username)) {
         response.status(500).json({
-            code: 101,
+            status: 'error',
             message: 'The user exists'
         });
     } else {
         users.push(user);
         saveUser(users);
         response.status(200).json({
-            code: 102,
+            status: 'success',
             message: 'The user register is successful'
         });
     }

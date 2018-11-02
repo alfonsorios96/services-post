@@ -7,7 +7,7 @@ const authorize = (request, response, next) => {
     if (token) {
         jwt.verify(token, 'secret_hash', (error, decoded) => {
             if (error) {
-                return response.status(403).json({code: 107, message: 'Failed to authenticate token.'});
+                return response.status(403).json({status: 'error', message: 'Failed to authenticate token.'});
             } else {
                 request.decoded = decoded;
                 next();
@@ -16,7 +16,7 @@ const authorize = (request, response, next) => {
 
     } else {
         return response.status(403).send({
-            code: 108,
+            status: 'error',
             message: 'No token provided.'
         });
 

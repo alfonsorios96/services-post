@@ -45,7 +45,7 @@ const createPost = (request, response) => {
     posts.push(request.body);
     savePosts(posts);
     response.status(200).json({
-        code: 109,
+        status: 'success',
         message: 'Post created!'
     });
 };
