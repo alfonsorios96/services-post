@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Alfonso Rios",
   "license": "MIT",
+  "engines": {
+    "node": "8.11.1"
+  },
   "scripts": {
     "start": "node index.js"
   },
